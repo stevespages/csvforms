@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="./js/main.js"></script>
+    <style>
+        .hide {
+            display: none;
+        }
+        button, input {
+            display: block;
+        }
+        .user-response-span {
+            color: green;
+        }
+        h1 {
+            font-size: 1.4em;
+        }
+        h2 {
+            font-size: 1.2em;
+        }
+        button, li, input {
+            margin-bottom: 14px;
+        }
+    </style>
+    <title>CSV Forms</title>
+</head>
+<body>
+    <h1>CSV Forms</h1>
+    <div id="colHeadingEdit_d">
+        <button id="colHeadingEdit_dCancel_btn">cancel</button>
+        <label>Edit Column Heading
+            <input id="colHeadingEdit_d_inp">
+        </label>
+        <button id="colHeadingEdit_dOk_btn">ok</button>
+    </div>
+    <div id="colMenu_d">
+        <button id="colMenu_dCancel_btn">cancel</button>
+        <button id="colMenu_dColHeading_btn">Column Heading</button>
+        <button id="colMenu_dAddQuestion_btn">Add Question</button>
+    </div>
+    <div id="createColHeading_d">
+        <button id="createColHeading_dCancel_btn">cancel</button>
+        <label>Column Heading
+            <input id="createColHeading_d_inp">
+        </label>
+        <button id="createColHeading_dStart_btn">start</button>
+    </div>
+    <div id="createFormTitle_d">
+        <button id="createFormTitle_dCancel_btn">cancel</button>
+        <h2>Create a Form</h2>
+        <label>
+            form title
+            <input id="createFormTitle_dTitle_inp" type="text"/>
+        </label>
+        <button id="createFormTitle_dStart_btn">start</button>
+    </div>
+    <div id="deleteReally_d" data-code-comment="from formMenu_d">
+        <h2>Really Delete?</h2>
+        <button id="deleteReally_dCancel_btn">cancel</button>
+        <button id="deleteReally_dOk_btn">ok</button>
+    </div>
+    <div id="formDescription_d">
+        <button id="formDescription_dCancel_btn">cancel</button>
+        <label>Form Description
+            <input id="formDescription_d_inp" type="text">
+        </label>
+        <button id="formDescription_dOk_btn">ok</button>
+    </div>
+    <div id="formFpx_d">
+        <button id="formFpx_dCancel_btn">cancel</button>
+        <label>Form File Name Prefix
+            <input id="formFpx_d_inp" type="text">
+        </label>
+        <button id="formFpx_dOk_btn">ok</button>
+    </div>
+    <div id="formMenu_d">
+        <h2 id="formMenu_d_h2"></h2>
+        <button id="formMenu_dCancel_btn">cancel</button>
+        <button id="formMenu_dAddRow_btn">add row</button>
+        <button id="formMenu_dDelete_btn">delete</button>
+        <button id="formMenu_dEdit_btn">edit form</button>
+        <button id="formMenu_dEmailRows_btn">
+            <a id="formMenu_dEmailRows_btn_a" target="_blank">
+                email rows (CSV)
+            </a>
+        </button>
+        <button id="formMenu_dSeeFormAndRows_btn">see form and rows (JSON)</button>
+        <button id="formMenu_dSeeRows_btn">see rows (CSV)</button>
+        <button id="formMenu_dView_btn">view</button>
+    </div>
+    <div id="formTitleEdit_d">
+        <button id="formTitleEdit_dCancel_btn">cancel</button>
+        <label>Form Title
+            <input id="formTitleEdit_d_inp" type="text">
+        </label>
+        <button id="formTitleEdit_dOk_btn">ok</button>
+    </div>
+    <div id="home_d">
+        <button id="home_dMainMenu_btn">menu</button>
+        <ul id="home_dForms_ul"></ul>
+    </div>
+    <div id="mainMenu_d" data-code-comment="from home_d">
+        <button id="mainMenu_dCancel_btn">cancel</button>
+        <button id="mainMenu_dClearAllData_btn">Clear All Forms</button>
+        <button id="mainMenu_dCreateForm_btn">create form</button>
+        <button id="mainMenu_dUploadCsvForForm_btn">upload CSV for form</button>
+        <button id="mainMenu_dUploadJsonForm_btn">upload JSON form</button>
+        <button id="mainMenu_dPasteJsonForm_btn">paste JSON form</button>
+    </div>
+    <div id="question_d" data-code-comment="from colHeading_d">
+        <button id="question_dCancel_btn">cancel</button>
+        <button id="question_dCheckbox_btn">checkbox</button>
+        <button id="question_dDate_btn">date</button>
+        <button id="question_dOrderItems_btn">order items</button>
+        <button id="question_dRadio_btn">radio</button>
+        <button id="question_dText_btn">text</button>
+    </div>
+    <div id="showForm_d" data-code-comment="from qChoice_d, qDate_d, qText_d">
+        <button id="showForm_dNewCol_btn">new column</button>
+        <button id="showForm_dEnd_btn">end / cancel / ok</button>
+        <div id="showForm_dInner_d">
+            <p>show form inner div...</p>
+        </div>
+    </div>
+</body>
+</html>
