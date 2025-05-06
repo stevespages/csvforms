@@ -1,8 +1,7 @@
 export function makeCsv(cf, context) {
-    //const forms = JSON.parse(localStorage.getItem("forms"));
-    //const form = forms.formsArr[forms.activeIdxs.form];
-
-    const form = cf.getForm();
+ 
+    const csvForms = cf.getCsvForms();
+    const form = cf.getForm(csvForms);
 
     const lengthOfUserResponsesArrays = form.columns[0] ?
         form.columns[0].userResponses.length : 0;

@@ -3,9 +3,9 @@ export function formMenu_d(cf, dom, makeCsv, showForm, viewAllRows) {
     dom.els.formMenu_d.addEventListener("click", event => {
         if (event.target.id === "formMenu_dAddRow_btn") {
             const csvForms = cf.getCsvForms();
-            const form = csvForms.forms[csvForms.activeIdxs.form];
+            const form = cf.getForm(csvForms);
             pushNullToAllUserResponses(form);
-            cf.setCsvForms();
+            cf.setCsvForms(csvForms);
             dom.els.addRow_d_h2.textContent = form.title;
             dom.els.addRow_d_ul.innerHTML = "";
             form.columns.forEach((col, idx) => {

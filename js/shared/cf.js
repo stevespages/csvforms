@@ -1,19 +1,29 @@
 export const cf = {
-
-    getForm() {
-        const csvForms = this.getCsvForms();
+    getColumn(csvForms) {
         const formIdx = csvForms.activeIdxs.form;
         const form = csvForms.forms[formIdx];
-        return form;
+        const colIdx = csvForms.activeIdxs.column;
+        const column = form.columns[colIdx];
+        return column;
     },
-    getForms() {
-        const csvForms = this.getCsvForms();
-        const forms = csvForms.forms;
-        return forms;
+    getColumns(csvForms) {
+        const formIdx = csvForms.activeIdxs.form;
+        const form = csvForms.forms[formIdx];
+        const colIdx = csvForms.activeIdxs.column;
+        return form.columns;
     },
     getCsvForms() {
         const csvForms = JSON.parse(localStorage.getItem("csvForms"));
         return csvForms;
+    },
+    getForm(csvForms) {
+        const formIdx = csvForms.activeIdxs.form;
+        const form = csvForms.forms[formIdx];
+        return form;
+    },
+    getForms(csvForms) {
+        const forms = csvForms.forms;
+        return forms;
     },
     setCsvForms(csvForms) {
         localStorage.setItem("csvForms", JSON.stringify(csvForms));

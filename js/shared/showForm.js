@@ -1,8 +1,7 @@
 export function showForm(cf, dom) {
-    //const forms = JSON.parse(localStorage.getItem("forms"));
-    //const form = forms.formsArr[forms.activeIdxs.form];
 
-    const form = cf.getForm();
+    const csvForms = cf.getCsvForms();
+    const form = cf.getForm(csvForms);
     console.log("form:", form)
     dom.els.showForm_dInner_d.innerHTML = "";
     const titleP = document.createElement("p");

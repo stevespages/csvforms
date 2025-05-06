@@ -28,6 +28,17 @@
 </head>
 <body>
     <h1>CSV Forms</h1>
+    <div id="addCell_d" data-code-comment="from addRow_d">
+        <h2 id="addCell_d_h2"></h2>
+        <button id="addCell_dCancel_btn">cancel</button>
+        <button id="addCell_dOk_btn">ok</button>
+        <form id="addCell_d_form"></form>
+    </div>
+    <div id="addRow_d" data-code-comment="from formMenu_d">
+        <button id="addRow_dOk_btn">ok</button>
+        <h2 id="addRow_d_h2"></h2>
+        <ul id="addRow_d_ul"></ul>
+    </div>
     <div id="colHeadingEdit_d">
         <button id="colHeadingEdit_dCancel_btn">cancel</button>
         <label>Edit Column Heading
@@ -36,9 +47,13 @@
         <button id="colHeadingEdit_dOk_btn">ok</button>
     </div>
     <div id="colMenu_d">
+        <h2 id="colMenu_d_h2"></h2>
         <button id="colMenu_dCancel_btn">cancel</button>
+        <button id="colMenu_dDeleteCol_btn">Delete Column</button>
         <button id="colMenu_dColHeading_btn">Column Heading</button>
         <button id="colMenu_dAddQuestion_btn">Add Question</button>
+        <h2>Delete Questions</h2>
+        <ul id="colMenu_dQuestions_ul"></ul>
     </div>
     <div id="createColHeading_d">
         <button id="createColHeading_dCancel_btn">cancel</button>
@@ -56,7 +71,7 @@
         </label>
         <button id="createFormTitle_dStart_btn">start</button>
     </div>
-    <div id="deleteReally_d" data-code-comment="from formMenu_d">
+    <div id="deleteReally_d">
         <h2>Really Delete?</h2>
         <button id="deleteReally_dCancel_btn">cancel</button>
         <button id="deleteReally_dOk_btn">ok</button>
@@ -109,6 +124,61 @@
         <button id="mainMenu_dUploadJsonForm_btn">upload JSON form</button>
         <button id="mainMenu_dPasteJsonForm_btn">paste JSON form</button>
     </div>
+
+    <div id="qChoice_d" data-code-comment="from question_d">
+        <button id="qChoice_dCancel_btn">cancel</button>
+        <h2 id="qChoice_d_h2"></h2>
+        <label>
+            choices
+            <input id="qChoice_d_inp" />
+        </label>
+        <button id="qChoice_dChoiceOk_btn">ok</button>
+        <ul id="qChoice_dChoices_ul"></ul>
+        <button class="q-ok-btn" id="qChoice_dOk_btn">ok</button>
+    </div>
+
+    <div id="qDate_d" data-code-comment="from question_d">
+        <button id="qDate_dCancel_btn">cancel</button>
+        <h2>Date Question</h2>
+            <label>include time
+                <input
+                    id="qDate_dIncludeTime_inp"
+                    type="checkbox"
+                >
+            </label>
+            <label>include year
+                <input
+                    id="qDate_dIncludeYear_inp"
+                    type="checkbox"
+                >
+            </label>
+            <label>show current
+                <input
+                    id="qDate_dShowCurrent_inp"
+                    type="checkbox"
+                >
+            </label>
+        <button class="q-ok-btn" id="qDate_dOk_btn">ok</button>
+    </div>
+
+    <div id="qOrderItems_d" data-code-comment="from question_d">
+        <button id="qOrderItems_dCancel_btn">cancel</button>
+        <h2>Order Items Question</h2>
+        <button class="q-ok-btn" id="qOrderItems_dOk_btn">ok</button>
+        <label>
+            Items To Put in Order
+            <input id="qOrderItems_d_inp">
+        </label>
+        <button id="qOrderItems_dOrderItemOk_btn">ok</button>
+        <ul id="qOrderItems_d_ul"></ul>
+    </div>
+
+    <div id="qText_d" data-code-comment="from question_d">
+        <button id="qText_dCancel_btn">cancel</button>
+        <h2 id="text-q_div_h2">Text Question</h2>
+        <button class="q-ok-btn" id="qText_dOk_btn">ok</button>
+    </div>
+
     <div id="question_d" data-code-comment="from colHeading_d">
         <button id="question_dCancel_btn">cancel</button>
         <button id="question_dCheckbox_btn">checkbox</button>

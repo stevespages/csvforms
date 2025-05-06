@@ -18,7 +18,8 @@ export function home_d(cf, dom, makeCsv){
 }
 
 function addHrefToEmailRows(cf, dom, makeCsv) {
-    const form = cf.getForm();
+    const csvForms = cf.getCsvForms();
+    const form = cf.getForm(csvForms);
     const subject = form.title + " | (" + form.formFileNamePrefix + ")";
     const body = makeCsv(cf, "for email");
     const href = "mailto:?subject=" + subject + "&body=" + body;

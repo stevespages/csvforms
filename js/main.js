@@ -1,4 +1,6 @@
 // d modules (ie. div modules)
+import { addRow_d } from "./d/addRow_d.js";
+import { addCell_d } from "./d/addCell_d.js";
 import { colHeadingEdit_d } from "./d/colHeadingEdit_d.js";
 import { colMenu_d } from "./d/colMenu_d.js";
 import { createColHeading_d } from "./d/createColHeading_d.js";
@@ -10,6 +12,10 @@ import { formMenu_d } from "./d/formMenu_d.js";
 import { formTitleEdit_d } from "./d/formTitleEdit_d.js";
 import { home_d } from "./d/home_d.js";
 import { mainMenu_d } from "./d/mainMenu_d.js";
+import { qChoice_d } from "./d/qChoice_d.js";
+import { qDate_d } from "./d/qDate_d.js";
+import { qOrderItems_d } from "./d/qOrderItems_d.js";
+import { qText_d } from "./d/qText_d.js";
 import { question_d } from "./d/question_d.js";
 import { showForm_d } from "./d/showForm_d.js";
 /*
@@ -30,6 +36,7 @@ import { viewAllRows_d } from "./d/viewAllRows_d.js";
 */
 
 // shared modules
+import { addQToForm } from "./shared/addQToForm.js";
 import { cf } from "./shared/cf.js";
 import { dom } from "./shared/dom.js";
 import { makeCsv } from "./shared/makeCsv.js";
@@ -55,17 +62,23 @@ dom.createElVars();
 dom.consoleLogEls();
 
 // d modules (event listeners)
+addCell_d(cf, dom);
+addRow_d(cf, dom);
 colHeadingEdit_d(cf, dom, showForm);
 colMenu_d(cf, dom);
 createColHeading_d(cf, dom, showForm);
 createFormTitle_d(cf, dom, showForm);
-deleteReally_d(cf, dom, populateHome_dForms_ul);
+deleteReally_d(cf, dom, populateHome_dForms_ul, showForm);
 formDescription_d(cf, dom, showForm);
 formFpx_d(cf, dom, showForm);
 formMenu_d(cf, dom, makeCsv, showForm, viewAllRows)
 formTitleEdit_d(cf, dom, showForm);
 home_d(cf, dom, makeCsv);
 mainMenu_d(cf, dom, populateHome_dForms_ul);
+qChoice_d(addQToForm, cf, dom, showForm);
+qDate_d(addQToForm, cf, dom, showForm);
+qOrderItems_d(addQToForm, cf, dom, showForm);
+qText_d(addQToForm, cf, dom, showForm);
 question_d(dom);
 showForm_d(cf, dom, populateHome_dForms_ul);
 /*

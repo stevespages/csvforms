@@ -7,6 +7,7 @@ export function question_d(dom) {
         if (event.target.id === "question_dCheckbox_btn") {
             dom.els.qChoice_d_h2.innerHTML = "Choice Question (checkbox)";
             dom.els.qChoice_dOk_btn.dataset.type = "checkbox";
+            dom.els.qChoice_dChoices_ul.innerHTML = "";
             dom.showDiv(["qChoice_d"]);
         }
         if (event.target.id === "question_dDate_btn") {
@@ -18,6 +19,7 @@ export function question_d(dom) {
         if (event.target.id === "question_dRadio_btn") {
             dom.els.qChoice_d_h2.innerHTML = "Choice Question (radio)";
             dom.els.qChoice_dOk_btn.dataset.type = "radio";
+            dom.els.qChoice_dChoices_ul.innerHTML = "";
             dom.showDiv(["qChoice_d"]);
         }
         if (event.target.id === "question_dText_btn") {
