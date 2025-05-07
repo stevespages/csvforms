@@ -19,18 +19,7 @@ import { qText_d } from "./d/qText_d.js";
 import { question_d } from "./d/question_d.js";
 import { showForm_d } from "./d/showForm_d.js";
 /*
-import { addCell_d } from "./d/addCell_d.js";
-import { addRow_d } from "./d/addRow_d.js";
-import { colHeading_d } from "./d/colHeading_d.js";
-
-import { deleteReally_d } from "./d/deleteReally_d.js";
-import { edit_d } from "./d/edit_d.js";
-
 import { pasteJsonForm_d } from "./d/pasteJsonForm_d.js";
-import { qChoice_qDate_qOrderItems_qText_d } from "./d/qChoice_qDate_qOrderItems_qText_d.js";
-import { question_d } from "./d/question_d.js";
-import { see_d } from "./d/see_d.js";
-
 import { uploadCsvForForm_d } from "./d/uploadCsvForForm_d.js";
 import { viewAllRows_d } from "./d/viewAllRows_d.js";
 */
@@ -82,23 +71,10 @@ qText_d(addQToForm, cf, dom, showForm);
 question_d(dom);
 showForm_d(cf, dom, populateHome_dForms_ul);
 /*
-addCell_d(dom);
-addRow_d(dom);
-deleteReally_d(dom, populateHome_dForms_ul);
-edit_d(dom, showForm);
-formMenu_d(dom, makeCsv, showForm, viewAllRows);
-
-
 pasteJsonForm_d(dom, populateHome_dForms_ul);
 see_d(dom);
 uploadCsvForForm_d(dom, populateHome_dForms_ul);
 viewAllRows_d(dom);
-
-// d modules for creating form (event listeners)
-colHeading_d(dom);
-qChoice_qDate_qOrderItems_qText_d(dom, showForm);
-question_d(dom);
-showForm_d(dom, populateHome_dForms_ul, showEdit);
 */
 
 populateHome_dForms_ul(cf, dom);
