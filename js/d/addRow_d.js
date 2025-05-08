@@ -28,15 +28,36 @@ export function addRow_d(cf, dom) {
 }
 
 function makeQuestion(question) {
+    if (question.category === "checkbox") {
+        return makeCheckboxQuestion(question);
+    }
     if (question.category === "date") {
         return makeDateQuestion(question);
     }
     if (question.category === "orderItems") {
         return makeOrderItemsQuestion(question);
     }
+    if (question.category === "radio") {
+        return makeRadioQuestion(question);
+    }
     if (question.category === "text") {
         return makeTextQuestion(question);
     }
+}
+
+function makeCheckboxQuestion(question) {
+    const section = document.createElement("section");
+    question.values.forEach(val => {
+        const label = document.createElement("label");
+        label.innerHTML = val;
+        const checkboxInp = document.createElement("input");
+        checkboxInp.setAttribute("name", "checkbox");
+        checkboxInp.setAttribute("type", "checkbox");
+        checkboxInp.setAttribute("value", val);
+        label.append(checkboxInp);
+        section.append(label);
+    })
+    return section;
 }
 
 function makeDateQuestion(question) {
@@ -77,6 +98,21 @@ function makeOrderItemsQuestion(question) {
     orderedItemsInp.setAttribute("name", "orderedItemsInp");
     orderedItemsInp.classList.add("hide");
     section.append(orderedItemsInp);
+    return section;
+}
+
+function makeRadioQuestion(question) {
+    const section = document.createElement("section");
+    question.values.forEach(val => {
+        const label = document.createElement("label");
+        label.innerHTML = val;
+        const radioInp = document.createElement("input");
+        radioInp.setAttribute("name", "radio");
+        radioInp.setAttribute("type", "radio");
+        radioInp.setAttribute("value", val);
+        label.append(radioInp);
+        section.append(label);
+    })
     return section;
 }
 

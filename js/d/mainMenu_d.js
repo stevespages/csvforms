@@ -5,19 +5,10 @@ export function mainMenu_d(cf, dom, populateHome_dForms_ul) {
             dom.showDiv(["home_d"]);
         }
         if (event.target.id === "mainMenu_dClearAllData_btn") {
-            localStorage.removeItem("csvForms");
-            if (!localStorage.getItem("forms")) {
-                localStorage.setItem("forms", JSON.stringify(
-                    {
-                        activeIdxs: {
-                            column: null,
-                            form: null,
-                            question: null,
-                        },
-                        editMode: false,
-                        formsArr: [],
-                    }));
-            }
+            // should be done via reallyDelete_d
+            const csvForms = cf.getCsvForms();
+            csvForms.forms = [];
+            cf.setCsvForms(csvForms);
             populateHome_dForms_ul(cf, dom);
             dom.showDiv(["home_d"]);
         }

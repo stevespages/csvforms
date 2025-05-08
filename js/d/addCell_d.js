@@ -26,8 +26,9 @@ export function addCell_d(cf, dom) {
             console.log("dom.els.addCell_d_form", dom.els.addCell_d_form)
             let userResponse = "";
             for (const value of formData.values()) {
-                userResponse += value;
+                userResponse += value + " | ";
             }
+            userResponse = userResponse.slice(0, userResponse.length - 3);
             const csvForms = cf.getCsvForms();
             const column = cf.getColumn(csvForms);
             const colIdx = csvForms.activeIdxs.column;

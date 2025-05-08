@@ -5,10 +5,8 @@ export function question_d(dom) {
             dom.showDiv(["showForm_d", "showForm_dInner_d"]);
         }
         if (event.target.id === "question_dCheckbox_btn") {
-            dom.els.qChoice_d_h2.innerHTML = "Choice Question (checkbox)";
-            dom.els.qChoice_dOk_btn.dataset.type = "checkbox";
-            dom.els.qChoice_dChoices_ul.innerHTML = "";
-            dom.showDiv(["qChoice_d"]);
+            dom.els.qCheckbox_dChoices_ul.innerHTML = "";
+            dom.showDiv(["qCheckbox_d"]);
         }
         if (event.target.id === "question_dDate_btn") {
             dom.showDiv(["qDate_d"]);
@@ -17,10 +15,8 @@ export function question_d(dom) {
             dom.showDiv(["qOrderItems_d"]);
         }
         if (event.target.id === "question_dRadio_btn") {
-            dom.els.qChoice_d_h2.innerHTML = "Choice Question (radio)";
-            dom.els.qChoice_dOk_btn.dataset.type = "radio";
-            dom.els.qChoice_dChoices_ul.innerHTML = "";
-            dom.showDiv(["qChoice_d"]);
+            dom.els.qRadio_dChoices_ul.innerHTML = "";
+            dom.showDiv(["qRadio_d"]);
         }
         if (event.target.id === "question_dText_btn") {
             dom.showDiv(["qText_d"]);
