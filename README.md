@@ -127,3 +127,5 @@ showForm_d
 ## NB
 
 *   form title, fpx and description edit dialogs (and colHeadingEdit_d_inp) should have the existing value displayed in the input element
+
+*   Remove `include year` from date question or make it work

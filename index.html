@@ -15,13 +15,14 @@
             color: green;
         }
         h1 {
-            font-size: 1.4em;
+            font-size: 1.6em;
         }
         h2 {
-            font-size: 1.2em;
+            font-size: 1.4em;
         }
         button, li, input {
-            margin-bottom: 14px;
+            margin-bottom: 25px;
+            font-size: 1.2em;
         }
     </style>
     <title>CSV Forms</title>
@@ -38,6 +39,10 @@
         <button id="addRow_dOk_btn">ok</button>
         <h2 id="addRow_d_h2"></h2>
         <ul id="addRow_d_ul"></ul>
+    </div>
+    <div id="changeColOrder_d">
+        <button id="changeColOrder_dEnd_btn">end / cancel / ok</button>
+        <ul id="changeColOrder_d_ul"></ul>
     </div>
     <div id="colHeadingEdit_d">
         <button id="colHeadingEdit_dCancel_btn">cancel</button>
@@ -69,6 +74,15 @@
             form title
             <input id="createFormTitle_dTitle_inp" type="text"/>
         </label>
+        <fieldset>
+            <legend>Optional</legend>
+            <label>Upload a CSV file
+                <input id="createFormTitle_dFile_inp" type="file">
+            </label>
+            <label>include rows
+                <input type="checkbox" id="createFormTitle_dIncludeRows_chkbx">
+            </label>
+        </fieldset>
         <button id="createFormTitle_dStart_btn">start</button>
     </div>
     <div id="deleteReally_d">
@@ -156,21 +170,33 @@
     <div id="qDate_d" data-code-comment="from question_d">
         <button id="qDate_dCancel_btn">cancel</button>
         <h2>Date Question</h2>
-            <label>include time
+            <label>date and time
                 <input
-                    id="qDate_dIncludeTime_inp"
+                    id="qDate_dDateAndTime_inp"
+                    type="checkbox"
+                >
+            </label>
+            <label>time only
+                <input
+                    id="qDate_dTimeOnly_inp"
+                    type="checkbox"
+                >
+            </label>
+            <label>include seconds
+                <input
+                    id="qDate_dIncludeSeconds_inp"
+                    type="checkbox"
+                >
+            </label>
+            <label>date only
+                <input
+                    id="qDate_dDateOnly_inp"
                     type="checkbox"
                 >
             </label>
             <label>include year
                 <input
                     id="qDate_dIncludeYear_inp"
-                    type="checkbox"
-                >
-            </label>
-            <label>show current
-                <input
-                    id="qDate_dShowCurrent_inp"
                     type="checkbox"
                 >
             </label>
@@ -217,6 +243,7 @@
     </div>
     <div id="showForm_d" data-code-comment="from qChoice_d, qDate_d, qText_d">
         <button id="showForm_dNewCol_btn">new column</button>
+        <button id="showForm_dChangeColOrder_btn">change column order</button>
         <button id="showForm_dEnd_btn">end / cancel / ok</button>
         <div id="showForm_dInner_d">
             <p>show form inner div...</p>

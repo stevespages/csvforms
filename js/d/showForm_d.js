@@ -40,6 +40,19 @@ dom.els.showForm_d.addEventListener("click", event => {
         dom.els.formTitleEdit_d_inp.value = form.title;
         dom.showDiv(["formTitleEdit_d"]);
     }
+    if (event.target.id === "showForm_dChangeColOrder_btn") {
+        const csvForms = cf.getCsvForms();
+        const columns = cf.getColumns(csvForms);
+        dom.els.changeColOrder_d_ul.innerHTML = "";
+        columns.forEach((column, colIdx) => {
+            const li = document.createElement("li");
+            li.textContent = "column " + colIdx + ": " + column.heading;
+            li.classList.add("changeColOrder_d_ul_li");
+            li.dataset.colIdx = colIdx;
+            dom.els.changeColOrder_d_ul.append(li);
+            dom.showDiv(["changeColOrder_d"])
+        })
+    }
     if (event.target.id === "showForm_dEnd_btn") {
         populateHome_dForms_ul(cf, dom);
         dom.showDiv(["home_d"]);

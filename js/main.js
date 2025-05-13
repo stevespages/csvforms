@@ -1,6 +1,7 @@
 // d modules (ie. div modules)
 import { addRow_d } from "./d/addRow_d.js";
 import { addCell_d } from "./d/addCell_d.js";
+import { changeColOrder_d } from "./d/changeColOrder_d.js";
 import { colHeadingEdit_d } from "./d/colHeadingEdit_d.js";
 import { colMenu_d } from "./d/colMenu_d.js";
 import { createColHeading_d } from "./d/createColHeading_d.js";
@@ -54,6 +55,7 @@ dom.consoleLogEls();
 // d modules (event listeners)
 addCell_d(cf, dom);
 addRow_d(cf, dom);
+changeColOrder_d(cf, dom, populateHome_dForms_ul, showForm);
 colHeadingEdit_d(cf, dom, showForm);
 colMenu_d(cf, dom);
 createColHeading_d(cf, dom, showForm);

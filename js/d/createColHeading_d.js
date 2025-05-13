@@ -6,11 +6,13 @@ export function createColHeading_d(cf, dom, showForm) {
         if (event.target.id === "createColHeading_dStart_btn") {
             const csvForms = cf.getCsvForms();
             const form = csvForms.forms[csvForms.activeIdxs.form];
-            form.columns.push({
-                heading: dom.els.createColHeading_d_inp.value,
-                questions: [],
-                userResponses: [],
-            })
+            form.columns.push(
+                // also used in createFormTitle_d id csv file uploaded
+                {
+                    heading: dom.els.createColHeading_d_inp.value,
+                    questions: [],
+                    userResponses: [],
+                })
             cf.setCsvForms(csvForms);
             showForm(cf, dom);
             dom.showDiv(["showForm_d", "showForm_dInner_d"]);

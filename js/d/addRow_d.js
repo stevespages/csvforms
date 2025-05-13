@@ -62,15 +62,22 @@ function makeCheckboxQuestion(question) {
 
 function makeDateQuestion(question) {
     const dateInp = document.createElement("input");
-    if (question.options.includeTime) {
-        dateInp.setAttribute("type", "datetime-local")
-        if (question.options.showCurrent) {
-            dateInp.value = dateForShowCurrent("includeTime");
+    if (question.options.dateAndTime) {
+        dateInp.setAttribute("type", "datetime-local");
+        if (question.options.includeSeconds) {
+            dateInp.setAttribute("step", 2);
         }
     } else {
-        dateInp.setAttribute("type", "date");
-        if (question.options.includeTime) {
-            dateInp.value = dateForShowCurrent("doNotIncludeTime")
+        if (question.options.timeOnly) {
+            dateInp.setAttribute("type", "time");
+            if (question.options.includeSeconds) {
+                dateInp.setAttribute("step", 2);
+                dateInp.setAttribute("value", getDateAndTime("hh:mm:ss"));
+            } else {
+                dateInp.setAttribute("value", getDateAndTime("hh:mm"));
+            }
+        } else {
+            dateInp.setAttribute("type", "date");
         }
     }
     dateInp.setAttribute("name", "dateInp");
@@ -142,6 +149,36 @@ function dateForShowCurrent(includeTimeOrNot) {
     } else {
         return year + "-" + month + "-" + day;
     }
+}
+
+function getDateAndTime(format) {
+    const date = new Date();
+
+    let sec = date.getSeconds();
+    let min = date.getMinutes();
+    let hr = date.getHours();
+
+    let day = date.getDate();
+    let month = date.getMonth();
+    let year = date.getFullYear();
+
+    if (sec < 10) sec = "0" + sec;
+    if (min < 10) min = "0" + min;
+    if (hr < 10) hrs = "0" + hrs;
+
+    if (day < 10) day = "0" + day;
+    month = month + 1;
+    if (month < 10) month = "0" + month;
+
+    if (format === "hh:mm") {
+        return hr + ":" + min;
+    }
+    if (format === "hh:mm:ss") {
+        return hr + ":" + min + sec;
+    }
+    
+    return year + month + day;
+
 }
 
 /*

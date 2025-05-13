@@ -6,9 +6,11 @@ export function qDate_d(addQToForm, cf, dom, showForm) {
         }
         if (event.target.id === "qDate_dOk_btn") {
             const options = {}
-            options.includeTime = dom.els.qDate_dIncludeTime_inp.checked;
+            options.dateAndTime = dom.els.qDate_dDateAndTime_inp.checked;
+            options.dateOnly = dom.els.qDate_dDateOnly_inp.checked;
+            options.includeSeconds = dom.els.qDate_dIncludeSeconds_inp.checked;
             options.includeYear = dom.els.qDate_dIncludeYear_inp.checked;
-            options.showCurrent = dom.els.qDate_dShowCurrent_inp.checked;
+            options.timeOnly = dom.els.qDate_dTimeOnly_inp.checked;
             const q =
                 {
                     category: "date",
