@@ -61,6 +61,11 @@ dom.els.showForm_d.addEventListener("click", event => {
         dom.els.createColHeading_d_inp.value = "";
         dom.showDiv(["createColHeading_d"]);
     }
+    if (event.target.id === "showForm_dUploadCsv_btn") {
+        dom.els.uploadCsv_dFile_inp.value = "";
+        dom.els.uploadCsv_dIncludeRowsChkbx_inp.checked = false;
+        dom.showDiv(["uploadCsv_d"]);
+    }
 })
 
 }

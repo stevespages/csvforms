@@ -74,15 +74,6 @@
             form title
             <input id="createFormTitle_dTitle_inp" type="text"/>
         </label>
-        <fieldset>
-            <legend>Optional</legend>
-            <label>Upload a CSV file
-                <input id="createFormTitle_dFile_inp" type="file">
-            </label>
-            <label>include rows
-                <input type="checkbox" id="createFormTitle_dIncludeRows_chkbx">
-            </label>
-        </fieldset>
         <button id="createFormTitle_dStart_btn">start</button>
     </div>
     <div id="deleteReally_d">
@@ -244,10 +235,21 @@
     <div id="showForm_d" data-code-comment="from qChoice_d, qDate_d, qText_d">
         <button id="showForm_dNewCol_btn">new column</button>
         <button id="showForm_dChangeColOrder_btn">change column order</button>
+        <button id="showForm_dUploadCsv_btn">upload csv</button>
         <button id="showForm_dEnd_btn">end / cancel / ok</button>
         <div id="showForm_dInner_d">
             <p>show form inner div...</p>
         </div>
+    </div>
+    <div id="uploadCsv_d">
+        <button id="uploadCsv_dCancel_btn">cancel</button>
+        <label>Upload a CSV file
+            <input id="uploadCsv_dFile_inp" type="file">
+        </label>
+        <label>include rows
+            <input type="checkbox" id="uploadCsv_dIncludeRowsChkbx_inp">
+        </label>
+        <button id="uploadCsv_dOk_btn">ok</button>
     </div>
 </body>
 </html>

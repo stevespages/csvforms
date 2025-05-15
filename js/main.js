@@ -20,6 +20,7 @@ import { qRadio_d } from "./d/qRadio_d.js";
 import { qText_d } from "./d/qText_d.js";
 import { question_d } from "./d/question_d.js";
 import { showForm_d } from "./d/showForm_d.js";
+import { uploadCsv_d } from "./d/uploadCsv_d.js";
 /*
 import { pasteJsonForm_d } from "./d/pasteJsonForm_d.js";
 import { uploadCsvForForm_d } from "./d/uploadCsvForForm_d.js";
@@ -74,6 +75,7 @@ qRadio_d(addQToForm, cf, dom, showForm);
 qText_d(addQToForm, cf, dom, showForm);
 question_d(dom);
 showForm_d(cf, dom, populateHome_dForms_ul);
+uploadCsv_d(cf, dom, showForm);
 /*
 pasteJsonForm_d(dom, populateHome_dForms_ul);
 see_d(dom);

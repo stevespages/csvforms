@@ -33,7 +33,7 @@ The following is an example of a `form` object as a JSON string which will work 
             "userResponses": {},
         },
         {
-            "heading": "Hive Name",
+            "heading": "Stores",
             "questions": [
                 {
                     "category": "text"
@@ -52,18 +52,15 @@ The following is an example of a `form` object as a JSON string which will work 
 /
     js/
         d/
-            home/
-                d.js
-                only-used-by-home_d.js 
-            etc/
-                d.js
-                only-used-by-etc_d.js
-        used-by-more-than-one-div.js
+            home_d.js
+            mainMenu_d.js
+        shared/
+            showForm.js
         main.js
     index.html
 ```
 
-Avoid importing files which are directly inside `/js/` into the div modules eg `/js/d/home/d.js`. Import them into `/js/main.js` and then pass them as arguments to the function exported by, for example, `/js/d/home/d.js`.
+Avoid importing files into the div modules inside `/js/d/` eg `/js/d/home_d.js`. Import them into `/js/main.js` and then pass them as arguments to the function exported by the module inside `/js/d/`.
 
 ## Flow
 
