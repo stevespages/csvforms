@@ -1,5 +1,5 @@
 // d modules (ie. div modules)
-import { addRow_d } from "./d/addRow_d.js";
+import { row_d } from "./d/row_d.js";
 import { addCell_d } from "./d/addCell_d.js";
 import { changeColOrder_d } from "./d/changeColOrder_d.js";
 import { colHeadingEdit_d } from "./d/colHeadingEdit_d.js";
@@ -30,11 +30,11 @@ import { viewAllRows_d } from "./d/viewAllRows_d.js";
 // shared modules
 import { addQToForm } from "./shared/addQToForm.js";
 import { cf } from "./shared/cf.js";
-import { dom } from "./shared/dom.js";
+import { dom } from "../../shared/js/dom.js";
 import { makeCsv } from "./shared/makeCsv.js";
 import { populateHome_dForms_ul } from "./shared/populateHome_dForms_ul.js";
 import { showForm } from "./shared/showForm.js";
-import { viewAllRows } from "./shared/viewAllRows.js";
+import { updateSingleUserResponseSpan } from "./shared/updateSingleUserResponseSpan.js";
 
 if (!localStorage.getItem("csvForms")) {
     localStorage.setItem("csvForms", JSON.stringify(
@@ -43,6 +43,7 @@ if (!localStorage.getItem("csvForms")) {
                 column: null,
                 form: null,
                 question: null,
+                row: null,
             },
             forms: [],
         }));
@@ -53,9 +54,12 @@ console.log("csvForms: ", JSON.parse(localStorage.getItem("forms")));
 dom.createElVars();
 dom.consoleLogEls();
 
+dom.createCustomEvents();
+console.log("dom.customEvents", dom.customEvents)
+
 // d modules (event listeners)
-addCell_d(cf, dom);
-addRow_d(cf, dom);
+addCell_d(cf, dom, updateSingleUserResponseSpan);
+row_d(cf, dom);
 changeColOrder_d(cf, dom, populateHome_dForms_ul, showForm);
 colHeadingEdit_d(cf, dom, showForm);
 colMenu_d(cf, dom);
@@ -64,9 +68,9 @@ createFormTitle_d(cf, dom, showForm);
 deleteReally_d(cf, dom, populateHome_dForms_ul, showForm);
 formDescription_d(cf, dom, showForm);
 formFpx_d(cf, dom, showForm);
-formMenu_d(cf, dom, makeCsv, showForm, viewAllRows)
+formMenu_d(cf, dom, makeCsv, showForm)
 formTitleEdit_d(cf, dom, showForm);
-home_d(cf, dom, makeCsv);
+home_d(cf, dom);
 mainMenu_d(cf, dom, populateHome_dForms_ul);
 qCheckbox_d(addQToForm, cf, dom, showForm);
 qDate_d(addQToForm, cf, dom, showForm);

@@ -24,21 +24,32 @@
             margin-bottom: 25px;
             font-size: 1.2em;
         }
+        #row_dRowIdx_inp{
+            width: 4em;
+            display: inline-block;
+        }
+        #row_dRowIdxUp_btn,
+        #row_dRowIdxDown_btn,
+        #row_dNewRow_btn {
+            display: inline-block;
+            margin-left: 25px;
+        }
+        #row_dPrimaryIdx_inp,
+        #row_dSecondaryIdx_inp,
+        #row_dTertiaryIdx_inp {
+            display: inline-block;
+            width: 2em;
+        }
     </style>
     <title>CSV Forms</title>
 </head>
 <body>
     <h1>CSV Forms</h1>
-    <div id="addCell_d" data-code-comment="from addRow_d">
+    <div id="addCell_d">
         <h2 id="addCell_d_h2"></h2>
         <button id="addCell_dCancel_btn">cancel</button>
         <button id="addCell_dOk_btn">ok</button>
         <form id="addCell_d_form"></form>
-    </div>
-    <div id="addRow_d" data-code-comment="from formMenu_d">
-        <button id="addRow_dOk_btn">ok</button>
-        <h2 id="addRow_d_h2"></h2>
-        <ul id="addRow_d_ul"></ul>
     </div>
     <div id="changeColOrder_d">
         <button id="changeColOrder_dEnd_btn">end / cancel / ok</button>
@@ -98,7 +109,7 @@
     <div id="formMenu_d">
         <h2 id="formMenu_d_h2"></h2>
         <button id="formMenu_dCancel_btn">cancel</button>
-        <button id="formMenu_dAddRow_btn">add row</button>
+        <button id="formMenu_dRow_btn">row</button>
         <button id="formMenu_dDelete_btn">delete</button>
         <button id="formMenu_dEdit_btn">edit form</button>
         <button id="formMenu_dEmailRows_btn">
@@ -123,11 +134,7 @@
     </div>
     <div id="mainMenu_d" data-code-comment="from home_d">
         <button id="mainMenu_dCancel_btn">cancel</button>
-        <button id="mainMenu_dBackup_btn">
-            <a id="mainMenu_dBackup_btn_a">
-                backup
-            </a>
-        </button>
+        <button id="mainMenu_dBackup_btn">backup</button>
         <button id="mainMenu_dClearAllData_btn">Clear All Forms</button>
         <button id="mainMenu_dCreateForm_btn">create form</button>
         <button id="mainMenu_dPasteJsonForm_btn">paste JSON form</button>
@@ -232,6 +239,31 @@
         <button id="question_dRadio_btn">radio</button>
         <button id="question_dText_btn">text</button>
     </div>
+        <div id="row_d">
+        <button id="row_dOk_btn">ok</button>
+        <h2 id="row_d_h2"></h2>
+        <p>
+            <label>1&#176;
+                <input id="row_dPrimaryIdx_inp" type="text">
+            </label>
+            <label>2&#176;
+                <input id="row_dSecondaryIdx_inp" type="text">
+            </label>
+            <label>3&#176;
+                <input id="row_dTertiaryIdx_inp" type="text">
+            </label>
+        </p>
+        <p>
+            <label>
+                row
+                <input id="row_dRowIdx_inp" type="text" value=0>
+            </label>
+            <button id="row_dRowIdxUp_btn">&#x25B2;</button>
+            <button id="row_dRowIdxDown_btn">&#x25BC;</button>
+            <button id="row_dNewRow_btn">+</button>
+        </p>
+        <ul id="row_d_ul"></ul>
+    </div>
     <div id="showForm_d" data-code-comment="from qChoice_d, qDate_d, qText_d">
         <button id="showForm_dNewCol_btn">new column</button>
         <button id="showForm_dChangeColOrder_btn">change column order</button>
@@ -251,5 +283,17 @@
         </label>
         <button id="uploadCsv_dOk_btn">ok</button>
     </div>
+<!--
+    <div id="view_d">
+        <button id="view_dCancel_btn">cancel</button>
+        <p>
+            row 
+            <input id="view_dRowIdx_inp" type="text" value=0>
+            <button id="view_dRowIdxUp_btn">&#x25B2;</button>
+            <button id="view_dRowIdxDown_btn">&#x25BC;</button>
+        </p>
+        <ul id="view_d_ul"></ul>
+    </div>
+-->
 </body>
 </html>

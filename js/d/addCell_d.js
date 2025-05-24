@@ -1,4 +1,4 @@
-export function addCell_d(cf, dom) {
+export function addCell_d(cf, dom, updateSingleUserResponseSpan) {
 
     dom.els.addCell_d.addEventListener("click", event => {
         if (event.target.classList.contains("orderItemsQuestionLi")) {
@@ -17,7 +17,7 @@ export function addCell_d(cf, dom) {
             orderedItemsInp.value = orderedItemsP.textContent;
         }
         if (event.target.id === "addCell_dCancel_btn") {
-            dom.showDiv(["addRow_d"]);
+            dom.showDiv(["row_d"]);
         }
         if (event.target.id === "addCell_dOk_btn") {
             
@@ -40,17 +40,10 @@ export function addCell_d(cf, dom) {
                 userResponse
             )
             cf.setCsvForms(csvForms);
-            updateUserResponseSpan(userResponse, colIdx);
-            dom.showDiv(["addRow_d"]);
+            updateSingleUserResponseSpan(userResponse, colIdx);
+            dom.showDiv(["row_d"]);
 
-            function updateUserResponseSpan(userResponse, colIdx) {
-                const spans = document.querySelectorAll(".user-response-span");
-                Array.from(spans).forEach(span => {
-                    if (span.dataset.colIdx === colIdx) {
-                        span.textContent = " " + userResponse;
-                    }
-                })
-            }
+
         }
     })
 
