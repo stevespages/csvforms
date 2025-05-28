@@ -1,5 +1,49 @@
 export function row_d(cf, dom) {
 
+    document.addEventListener("changeDiv", () => {
+        if (dom.els.row_d.dataset.toFrom === "row_d addCell_d") {
+            dom.els.row_d.dataset.toFrom = "";
+            dom.showDiv("row_d");
+            const csvForms = cf.getCsvForms();
+            const rowIdx = csvForms.activeIdxs.row;
+            const cols = cf.getColumns(csvForms);
+            const spans = document.querySelectorAll(".user-response-span");
+            Array.from(spans).forEach(span => {
+                const col = cols[span.dataset.colIdx];
+                const userResponse = col.userResponses[rowIdx];
+                if (userResponse) {
+                    span.textContent = " " + userResponse;
+                }
+            })
+        }
+        if (dom.els.row_d.dataset.toFrom === "row_d formMenu_d") {
+            dom.els.row_d.dataset.toFrom = "";
+            const csvForms = cf.getCsvForms();
+            const form = cf.getForm(csvForms);
+            dom.els.row_d_h2.textContent = form.title;
+            dom.els.row_d_ul.innerHTML = "";
+            // show last row
+            form.columns.forEach((col, idx) => {
+                const colHeadingLi = document.createElement("li");
+                colHeadingLi.classList.add("row_d_ul_li");
+                colHeadingLi.textContent = col.heading;
+                colHeadingLi.dataset.colIdx = idx;
+                const userResponseSpan = document.createElement("span");
+                userResponseSpan.classList.add("user-response-span");
+                userResponseSpan.dataset.colIdx = idx;
+                colHeadingLi.append(userResponseSpan);
+                dom.els.row_d_ul.append(colHeadingLi);
+            })
+
+            dom.els.row_dRowIdx_inp.value =
+                form.columns[0].userResponses.length;
+            csvForms.activeIdxs.row = form.columns[0].userResponses.length - 1;
+            cf.setCsvForms(csvForms);
+            dom.showDiv(["row_d"]);
+        }
+
+    });
+
     dom.els.row_d.addEventListener("click", event => {
         if (event.target.classList.contains("row_d_ul_li")) {
             const colIdx = event.target.dataset.colIdx;

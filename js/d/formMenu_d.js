@@ -1,19 +1,15 @@
 export function formMenu_d(cf, dom, makeCsv, showForm) {
 
-    //formMenu_dEvent = new CustomEvent("formMenu_dEvent");
-    document.addEventListener("formMenu_dEvent", () => {
-        console.log("formMenu_dEvent has been dispatched");
-        const csvForms = cf.getCsvForms();
-        const form = cf.getForm(csvForms);
-        dom.els.formMenu_d_h2.textContent = form.title;
-        // this ought to be done when they click the menu item and the link
-        // automatically made...
-        addHrefToEmailRows(dom, form, makeCsv);
-        function addHrefToEmailRows(dom, form, makeCsv) {
-            const subject = form.title + " | (" + form.formFileNamePrefix + ")";
-            const body = makeCsv(cf, "for email");
-            const href = "mailto:?subject=" + subject + "&body=" + body;
-            dom.els.formMenu_dEmailRows_btn_a.setAttribute("href", href);
+    document.addEventListener("changeDiv", () => {
+        if (dom.els.formMenu_d.dataset.toFrom === "formMenu_d home_d") {
+            dom.els.formMenu_d.dataset.toFrom = "";
+
+            // check form has columns. If not disable and grey row btn.
+
+            dom.showDiv("formMenu_d");
+            const csvForms = cf.getCsvForms();
+            const form = cf.getForm(csvForms);
+            dom.els.formMenu_d_h2.textContent = form.title;
         }
     })
 
@@ -33,40 +29,31 @@ export function formMenu_d(cf, dom, makeCsv, showForm) {
             dom.showDiv(["showForm_d", "showForm_dInner_d"]);
         }
         if (event.target.id === "formMenu_dEmailRows_btn") {
-
-        }
-        if (event.target.id === "formMenu_dRow_btn") {
             const csvForms = cf.getCsvForms();
             const form = cf.getForm(csvForms);
-
+            const a = document.createElement("a");
+            addHrefToEmailRows(form, makeCsv);
+            function addHrefToEmailRows(form, makeCsv) {
+                const subject = form.title + " | (" + form.formFileNamePrefix + ")";
+                const body = makeCsv(cf, "for email");
+                const href = "mailto:?subject=" + subject + "&body=" + body;
+                a.setAttribute("href", href);
+            }
+            a.click();
+        }
+        if (event.target.id === "formMenu_dRow_btn") {
+            
             // If there are no columns in the csvForm do not respond.
             // It would be best to alert the user to what has happened and
             // make the formMenu_dRow_btn greyed out.
+            const csvForms = cf.getCsvForms();
+            const form = cf.getForm(csvForms);
             if (form.columns.length === 0) {
                 return;
             }
 
-            dom.els.row_d_h2.textContent = form.title;
-            dom.els.row_d_ul.innerHTML = "";
-
-            // show last row
-            form.columns.forEach((col, idx) => {
-                const colHeadingLi = document.createElement("li");
-                colHeadingLi.classList.add("row_d_ul_li");
-                colHeadingLi.textContent = col.heading;
-                colHeadingLi.dataset.colIdx = idx;
-                const userResponseSpan = document.createElement("span");
-                userResponseSpan.classList.add("user-response-span");
-                userResponseSpan.dataset.colIdx = idx;
-                colHeadingLi.append(userResponseSpan);
-                dom.els.row_d_ul.append(colHeadingLi);
-            })
-
-            dom.els.row_dRowIdx_inp.value =
-                form.columns[0].userResponses.length;
-            csvForms.activeIdxs.row = form.columns[0].userResponses.length - 1;
-            cf.setCsvForms(csvForms);
-            dom.showDiv(["row_d"]);
+            dom.els.row_d.dataset.toFrom = "row_d formMenu_d";
+            document.dispatchEvent(dom.changeDiv);
         }
         if (event.target.id === "formMenu_dSeeFormAndRows_btn") {
             const forms = JSON.parse(localStorage.getItem("forms"));

@@ -54,9 +54,6 @@ console.log("csvForms: ", JSON.parse(localStorage.getItem("forms")));
 dom.createElVars();
 dom.consoleLogEls();
 
-dom.createCustomEvents();
-console.log("dom.customEvents", dom.customEvents)
-
 // d modules (event listeners)
 addCell_d(cf, dom, updateSingleUserResponseSpan);
 row_d(cf, dom);
