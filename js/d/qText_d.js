@@ -1,4 +1,4 @@
-export function qText_d(addQToForm, cf, dom, showForm) {
+export function qText_d(addQToForm, cf, dom) {
 
     dom.els.qText_d.addEventListener("click", event => {
         if (event.target.id === "qText_dCancel_btn") {
@@ -10,8 +10,8 @@ export function qText_d(addQToForm, cf, dom, showForm) {
                     category: "text",
                 };
             addQToForm(cf, q);
-            showForm(cf, dom);
-            dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+            dom.els.showForm_d.dataset.toFrom = "showForm_d qText_d";
+            document.dispatchEvent(dom.changeDiv);
         }
     })
 

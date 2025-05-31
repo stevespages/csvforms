@@ -18,8 +18,8 @@ export function qDate_d(addQToForm, cf, dom, showForm) {
                 };
             
             addQToForm(cf, q);
-            showForm(cf, dom);
-            dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+            dom.els.showForm_d.dataset.toFrom = "showForm_d qDate_d";
+            document.dispatchEvent(dom.changeDiv);
         }
     })
 

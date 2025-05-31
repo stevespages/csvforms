@@ -1,4 +1,4 @@
-export function createFormTitle_d(cf, dom, showForm) {
+export function createFormTitle_d(cf, dom) {
 
     dom.els.createFormTitle_d.addEventListener("click", event => {
 
@@ -21,8 +21,8 @@ export function createFormTitle_d(cf, dom, showForm) {
             const formIdx = (csvForms.forms.push(newForm) - 1)
             csvForms.activeIdxs.form = formIdx;
             cf.setCsvForms(csvForms);
-            showForm(cf, dom);
-            dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+            dom.els.showForm_d.dataset.toFrom = "showForm_d createFormTitle_d";
+            document.dispatchEvent(dom.changeDiv);
         }
 
     })

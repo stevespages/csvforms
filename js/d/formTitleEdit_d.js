@@ -9,8 +9,8 @@ export function formTitleEdit_d(cf, dom, showForm) {
             const form = csvForms.forms[csvForms.activeIdxs.form];
             form.title = dom.els.formTitleEdit_d_inp.value;
             cf.setCsvForms(csvForms);
-            showForm(cf, dom);
-            dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+            dom.els.showForm_d.dataset.toFrom = "showForm_d formTitleEdit_d";
+            document.dispatchEvent(dom.changeDiv);
         }
     })
 

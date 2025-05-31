@@ -1,4 +1,4 @@
-export function changeColOrder_d(cf, dom, populateHome_dForms_ul, showForm) {
+export function changeColOrder_d(cf, dom) {
 
     dom.els.changeColOrder_d.addEventListener("click", event => {
         if (event.target.classList.contains("changeColOrder_d_ul_li")) {
@@ -57,8 +57,8 @@ export function changeColOrder_d(cf, dom, populateHome_dForms_ul, showForm) {
         }
 
         if (event.target.id === "changeColOrder_dEnd_btn") {
-            showForm(cf, dom, populateHome_dForms_ul);
-            dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+            dom.els.showForm_d.dataset.toFrom = "showForm_d changeColOrder_d";
+            document.dispatchEvent(dom.changeDiv);
         }
 
     })

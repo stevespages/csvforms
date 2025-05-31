@@ -1,4 +1,4 @@
-export function qOrderItems_d(addQToForm, cf, dom, showForm) {
+export function qOrderItems_d(addQToForm, cf, dom) {
 
     dom.els.qOrderItems_d.addEventListener("click", event => {
         if (event.target.id === "qOrderItems_dCancel_btn") {
@@ -23,8 +23,8 @@ export function qOrderItems_d(addQToForm, cf, dom, showForm) {
                     values: values,
                 }
             addQToForm(cf, q);
-            showForm(cf, dom);
-            dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+            dom.els.showForm_d.dataset.toFrom = "showForm_d qOrderItems_d";
+            document.dispatchEvent(dom.changeDiv);
         }
     })
 

@@ -21,20 +21,12 @@ import { qText_d } from "./d/qText_d.js";
 import { question_d } from "./d/question_d.js";
 import { showForm_d } from "./d/showForm_d.js";
 import { uploadCsv_d } from "./d/uploadCsv_d.js";
-/*
-import { pasteJsonForm_d } from "./d/pasteJsonForm_d.js";
-import { uploadCsvForForm_d } from "./d/uploadCsvForForm_d.js";
-import { viewAllRows_d } from "./d/viewAllRows_d.js";
-*/
 
 // shared modules
 import { addQToForm } from "./shared/addQToForm.js";
 import { cf } from "./shared/cf.js";
 import { dom } from "../../shared/js/dom.js";
 import { makeCsv } from "./shared/makeCsv.js";
-import { populateHome_dForms_ul } from "./shared/populateHome_dForms_ul.js";
-import { showForm } from "./shared/showForm.js";
-import { updateSingleUserResponseSpan } from "./shared/updateSingleUserResponseSpan.js";
 
 if (!localStorage.getItem("csvForms")) {
     localStorage.setItem("csvForms", JSON.stringify(
@@ -55,35 +47,28 @@ dom.createElVars();
 dom.consoleLogEls();
 
 // d modules (event listeners)
-addCell_d(cf, dom, updateSingleUserResponseSpan);
+addCell_d(cf, dom);
 row_d(cf, dom);
-changeColOrder_d(cf, dom, populateHome_dForms_ul, showForm);
-colHeadingEdit_d(cf, dom, showForm);
+changeColOrder_d(cf, dom);
+colHeadingEdit_d(cf, dom);
 colMenu_d(cf, dom);
-createColHeading_d(cf, dom, showForm);
-createFormTitle_d(cf, dom, showForm);
-deleteReally_d(cf, dom, populateHome_dForms_ul, showForm);
-formDescription_d(cf, dom, showForm);
-formFpx_d(cf, dom, showForm);
-formMenu_d(cf, dom, makeCsv, showForm)
-formTitleEdit_d(cf, dom, showForm);
+createColHeading_d(cf, dom);
+createFormTitle_d(cf, dom);
+deleteReally_d(cf, dom);
+formDescription_d(cf, dom);
+formFpx_d(cf, dom);
+formMenu_d(cf, dom, makeCsv)
+formTitleEdit_d(cf, dom);
 home_d(cf, dom);
-mainMenu_d(cf, dom, populateHome_dForms_ul);
-qCheckbox_d(addQToForm, cf, dom, showForm);
-qDate_d(addQToForm, cf, dom, showForm);
-qOrderItems_d(addQToForm, cf, dom, showForm);
-qRadio_d(addQToForm, cf, dom, showForm);
-qText_d(addQToForm, cf, dom, showForm);
+mainMenu_d(cf, dom);
+qCheckbox_d(addQToForm, cf, dom);
+qDate_d(addQToForm, cf, dom);
+qOrderItems_d(addQToForm, cf, dom);
+qRadio_d(addQToForm, cf, dom);
+qText_d(addQToForm, cf, dom);
 question_d(dom);
-showForm_d(cf, dom, populateHome_dForms_ul);
-uploadCsv_d(cf, dom, showForm);
-/*
-pasteJsonForm_d(dom, populateHome_dForms_ul);
-see_d(dom);
-uploadCsvForForm_d(dom, populateHome_dForms_ul);
-viewAllRows_d(dom);
-*/
+showForm_d(cf, dom);
+uploadCsv_d(cf, dom);
 
-populateHome_dForms_ul(cf, dom);
-
-dom.showDiv(["home_d"]);
+dom.els.home_d.dataset.toFrom = "home_d START"
+document.dispatchEvent(dom.changeDiv);

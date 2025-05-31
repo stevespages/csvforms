@@ -1,4 +1,4 @@
-export function createColHeading_d(cf, dom, showForm) {
+export function createColHeading_d(cf, dom) {
     dom.els.createColHeading_d.addEventListener("click", event => {
         if (event.target.id === "createColHeading_dCancel_btn") {
             dom.showDiv(["showForm_d", "showForm_dInner_d"]);
@@ -14,8 +14,8 @@ export function createColHeading_d(cf, dom, showForm) {
                     userResponses: [],
                 })
             cf.setCsvForms(csvForms);
-            showForm(cf, dom);
-            dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+            dom.els.showForm_d.dataset.toFrom = "showForm_d createColHeading_d";
+            document.dispatchEvent(dom.changeDiv);
         }
     })
 }

@@ -1,4 +1,4 @@
-export function uploadCsv_d(cf, dom, showForm) {
+export function uploadCsv_d(cf, dom) {
 
     dom.els.uploadCsv_d.addEventListener("click", event => {
 
@@ -39,8 +39,8 @@ export function uploadCsv_d(cf, dom, showForm) {
                         columns.push(colFromCsv);
                     })
                     cf.setCsvForms(csvForms);
-                    showForm(cf, dom);
-                    dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+                    dom.els.showForm_d.dataset.toFrom = "showForm_d uploadCsv_d";
+                    document.dispatchEvent(dom.changeDiv);
                 })
                 reader.readAsText(csvFile);
             } else {

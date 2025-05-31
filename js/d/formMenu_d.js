@@ -1,4 +1,4 @@
-export function formMenu_d(cf, dom, makeCsv, showForm) {
+export function formMenu_d(cf, dom, makeCsv) {
 
     document.addEventListener("changeDiv", () => {
         if (dom.els.formMenu_d.dataset.toFrom === "formMenu_d home_d") {
@@ -25,8 +25,12 @@ export function formMenu_d(cf, dom, makeCsv, showForm) {
             dom.showDiv(["deleteReally_d"]);
         }
         if (event.target.id === "formMenu_dEdit_btn") {
+            dom.els.showForm_d.dataset.toFrom = "showForm_d formMenu_d";
+            document.dispatchEvent(dom.changeDiv);
+            /*
             showForm(cf, dom);
             dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+            */
         }
         if (event.target.id === "formMenu_dEmailRows_btn") {
             const csvForms = cf.getCsvForms();

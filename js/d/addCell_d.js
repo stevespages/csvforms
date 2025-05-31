@@ -40,7 +40,6 @@ export function addCell_d(cf, dom) {
             cf.setCsvForms(csvForms);
             dom.els.row_d.dataset.toFrom = "row_d addCell_d";
             document.dispatchEvent(dom.changeDiv);
-            //dom.showDiv(["row_d"]);
         }
     })
 }

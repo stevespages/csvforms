@@ -1,4 +1,4 @@
-export function mainMenu_d(cf, dom, populateHome_dForms_ul) {
+export function mainMenu_d(cf, dom) {
 
     dom.els.mainMenu_d.addEventListener("click", event => {
         if (event.target.id === "mainMenu_dBackup_btn") {
@@ -22,8 +22,8 @@ export function mainMenu_d(cf, dom, populateHome_dForms_ul) {
             const csvForms = cf.getCsvForms();
             csvForms.forms = [];
             cf.setCsvForms(csvForms);
-            populateHome_dForms_ul(cf, dom);
-            dom.showDiv(["home_d"]);
+            dom.els.home_d.dataset.toFrom = "home_d mainMenu_d";
+            document.dispatchEvent(dom.changeDiv);
         }
         if (event.target.id === "mainMenu_dCreateForm_btn") {
             dom.els.createFormTitle_dTitle_inp.value = "";

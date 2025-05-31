@@ -1,4 +1,27 @@
-export function showForm_d(cf, dom, populateHome_dForms_ul) {
+export function showForm_d(cf, dom) {
+
+document.addEventListener("changeDiv", () => {
+    if (
+        dom.els.showForm_d.dataset.toFrom === "showForm_d changeColOrder_d" ||
+        dom.els.showForm_d.dataset.toFrom === "showForm_d colHeadingEdit_d" ||
+        dom.els.showForm_d.dataset.toFrom === "showForm_d createColHeading_d" ||
+        dom.els.showForm_d.dataset.toFrom === "showForm_d createFormTitle_d" ||
+        dom.els.showForm_d.dataset.toFrom === "showForm_d formFpx_d" || 
+        dom.els.showForm_d.dataset.toFrom === "showForm_d deleteReally_d" ||
+        dom.els.showForm_d.dataset.toFrom === "showForm_d formDescription_d" ||
+        dom.els.showForm_d.dataset.toFrom === "showForm_d formMenu_d" ||
+        dom.els.showForm_d.dataset.toFrom === "showForm_d formTitleEdit_d" ||
+        dom.els.showForm_d.dataset.toFrom === "showForm_d qCheckbox_d" ||
+        dom.els.showForm_d.dataset.toFrom === "showForm_d qDate_d" ||
+        dom.els.showForm_d.dataset.toFrom === "showForm_d qOrderItems_d" ||
+        dom.els.showForm_d.dataset.toFrom === "showForm_d qRadio_d" ||
+        dom.els.showForm_d.dataset.toFrom === "showForm_d qText_d"
+    ) {
+        dom.els.showForm_d.dataset.toFrom = "";
+        showForm(cf, dom);
+        dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+    }
+})
 
 dom.els.showForm_d.addEventListener("click", event => {
     if (event.target.classList.contains("showForm_dColumn_p")) {
@@ -54,8 +77,8 @@ dom.els.showForm_d.addEventListener("click", event => {
         })
     }
     if (event.target.id === "showForm_dEnd_btn") {
-        populateHome_dForms_ul(cf, dom);
-        dom.showDiv(["home_d"]);
+        dom.els.home_d.dataset.toFrom = "home_d showForm_d";
+        document.dispatchEvent(dom.changeDiv);
     }
     if (event.target.id === "showForm_dNewCol_btn") {
         dom.els.createColHeading_d_inp.value = "";
@@ -68,4 +91,34 @@ dom.els.showForm_d.addEventListener("click", event => {
     }
 })
 
+}
+
+function showForm(cf, dom) {
+
+    const csvForms = cf.getCsvForms();
+    const form = cf.getForm(csvForms);
+    console.log("form:", form)
+    dom.els.showForm_dInner_d.innerHTML = "";
+    const titleP = document.createElement("p");
+    titleP.classList.add("showForm_dTitle_p");
+    titleP.innerHTML = "title: " + form.title;
+    const descriptionP = document.createElement("p");
+    descriptionP.classList.add("showForm_dDescription_p");
+    descriptionP.innerHTML = "description: " + form.description;
+    const fpxP = document.createElement("p");
+    fpxP.classList.add("showForm_dFpx_p");
+    fpxP.innerHTML = "file name prefix: " + form.fpx;
+    dom.els.showForm_dInner_d.append(titleP, fpxP, descriptionP);
+    form.columns.forEach((column, i) => {
+        const columnP = document.createElement("p");
+        columnP.classList.add("showForm_dColumn_p");
+        columnP.dataset.colIdx = i;
+        columnP.innerHTML = "column " + parseInt(i + 1) + " " + column.heading;
+        dom.els.showForm_dInner_d.append(columnP);
+        column.questions.forEach(question => {
+            const questionP = document.createElement("p");
+            questionP.innerHTML = JSON.stringify(question);
+            dom.els.showForm_dInner_d.append(questionP);
+        })
+    })
 }
