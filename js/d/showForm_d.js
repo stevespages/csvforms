@@ -2,24 +2,27 @@ export function showForm_d(cf, dom) {
 
 document.addEventListener("changeDiv", () => {
     if (
-        dom.els.showForm_d.dataset.toFrom === "showForm_d changeColOrder_d" ||
-        dom.els.showForm_d.dataset.toFrom === "showForm_d colHeadingEdit_d" ||
-        dom.els.showForm_d.dataset.toFrom === "showForm_d createColHeading_d" ||
-        dom.els.showForm_d.dataset.toFrom === "showForm_d createFormTitle_d" ||
-        dom.els.showForm_d.dataset.toFrom === "showForm_d formFpx_d" || 
-        dom.els.showForm_d.dataset.toFrom === "showForm_d deleteReally_d" ||
-        dom.els.showForm_d.dataset.toFrom === "showForm_d formDescription_d" ||
-        dom.els.showForm_d.dataset.toFrom === "showForm_d formMenu_d" ||
-        dom.els.showForm_d.dataset.toFrom === "showForm_d formTitleEdit_d" ||
-        dom.els.showForm_d.dataset.toFrom === "showForm_d qCheckbox_d" ||
-        dom.els.showForm_d.dataset.toFrom === "showForm_d qDate_d" ||
-        dom.els.showForm_d.dataset.toFrom === "showForm_d qOrderItems_d" ||
-        dom.els.showForm_d.dataset.toFrom === "showForm_d qRadio_d" ||
-        dom.els.showForm_d.dataset.toFrom === "showForm_d qText_d"
+    [        
+        "showForm_d changeColOrder_d",
+        "showForm_d colHeadingEdit_d",
+        "showForm_d createColHeading_d",
+        "showForm_d createFormTitle_d",
+        "showForm_d formFpx_d", 
+        "showForm_d deleteReally_d",
+        "showForm_d formDescription_d",
+        "showForm_d formMenu_d",
+        "showForm_d formTitleEdit_d",
+        "showForm_d qCheckbox_d",
+        "showForm_d qDate_d",
+        "showForm_d qOrderItems_d",
+        "showForm_d qRadio_d",
+        "showForm_d qText_d"
+    ]
+    .includes(dom.els.showForm_d.dataset.toFrom)
     ) {
         dom.els.showForm_d.dataset.toFrom = "";
         showForm(cf, dom);
-        dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+        dom.showDiv("showForm_d");
     }
 })
 
@@ -98,7 +101,7 @@ function showForm(cf, dom) {
     const csvForms = cf.getCsvForms();
     const form = cf.getForm(csvForms);
     console.log("form:", form)
-    dom.els.showForm_dInner_d.innerHTML = "";
+    dom.els.showForm_dInner_section.innerHTML = "";
     const titleP = document.createElement("p");
     titleP.classList.add("showForm_dTitle_p");
     titleP.innerHTML = "title: " + form.title;
@@ -108,17 +111,17 @@ function showForm(cf, dom) {
     const fpxP = document.createElement("p");
     fpxP.classList.add("showForm_dFpx_p");
     fpxP.innerHTML = "file name prefix: " + form.fpx;
-    dom.els.showForm_dInner_d.append(titleP, fpxP, descriptionP);
+    dom.els.showForm_dInner_section.append(titleP, fpxP, descriptionP);
     form.columns.forEach((column, i) => {
         const columnP = document.createElement("p");
         columnP.classList.add("showForm_dColumn_p");
         columnP.dataset.colIdx = i;
         columnP.innerHTML = "column " + parseInt(i + 1) + " " + column.heading;
-        dom.els.showForm_dInner_d.append(columnP);
+        dom.els.showForm_dInner_section.append(columnP);
         column.questions.forEach(question => {
             const questionP = document.createElement("p");
             questionP.innerHTML = JSON.stringify(question);
-            dom.els.showForm_dInner_d.append(questionP);
+            dom.els.showForm_dInner_section.append(questionP);
         })
     })
 }
