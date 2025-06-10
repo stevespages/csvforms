@@ -1,14 +1,29 @@
-export function home_d(cf, dom){
+export function home_d(cf, dom) {
 
     document.addEventListener("changeDiv", () => {
         if (
-            dom.els.home_d.dataset.toFrom === "home_d START" || 
-            dom.els.home_d.dataset.toFrom === "home_d mainMenu_d" ||
-            dom.els.home_d.dataset.toFrom === "home_d deleteReally_d" ||
-            dom.els.home_d.dataset.toFrom === "home_d showForm_d"
+            [
+            "deleteReally_d",
+            "formMenu_d",
+            "mainMenu_d",
+            "showForm_d",
+            "START"
+            ]
+            .includes(dom.els.home_d.dataset.from)
         ) {
-            dom.els.home_d.dataset.toFrom = "";
+            dom.els.home_d.dataset.from = "";
             populateHome_dForms_ul(cf, dom);
+            dom.showDiv("home_d");
+        }
+        if (
+            [
+            "formMenu_dCancel_btn",
+            "mainMenu_dCancel_btn",
+            "row_dOk_btn"
+            ]
+            .includes(dom.els.home_d.dataset.from)
+        ) {
+            dom.els.home_d.dataset.from = "";
             dom.showDiv("home_d");
         }
     })
@@ -18,12 +33,10 @@ export function home_d(cf, dom){
             const csvForms = cf.getCsvForms();
             csvForms.activeIdxs.form = ev.target.dataset.formIdx;
             cf.setCsvForms(csvForms);
-            dom.els.formMenu_d.dataset.toFrom = "formMenu_d home_d";
-            document.dispatchEvent(dom.changeDiv);
-            //dom.showDiv(["formMenu_d"]);
+            dom.changeDivTo("formMenu_d", "home_dForms_ul_li-class");
         }
         if (ev.target.id === "home_dMainMenu_btn") {
-            dom.showDiv(["mainMenu_d"]);
+            dom.changeDivTo("mainMenu_d", ev.target.id);
         }
     });
 

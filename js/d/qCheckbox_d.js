@@ -1,7 +1,7 @@
 export function qCheckbox_d(addQToForm, cf, dom) {
     dom.els.qCheckbox_d.addEventListener("click", event => {
         if (event.target.id === "qCheckbox_dCancel_btn") {
-            dom.showDiv(["showForm_d","showForm_dInner_d"]);
+               dom.changeDivTo("showForm_d", event.target.id);
         }
         if (event.target.id === "qCheckbox_dChoiceOk_btn") {
             if (!dom.els.qCheckbox_dChoices_inp.value) {
@@ -25,7 +25,7 @@ export function qCheckbox_d(addQToForm, cf, dom) {
                     values: values,
                 }
             addQToForm(cf, q);
-            dom.els.showForm_d.dataset.toFrom = "showForm_d qCheckbox_d.js";
+            dom.els.showForm_d.dataset.from = "showForm_d qCheckbox_d.js";
             document.dispatchEvent(changeDiv);
         }
     })

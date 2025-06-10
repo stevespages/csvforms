@@ -1,8 +1,8 @@
-export function qDate_d(addQToForm, cf, dom, showForm) {
+export function qDate_d(addQToForm, cf, dom) {
 
     dom.els.qDate_d.addEventListener("click", event => {
         if (event.target.id === "qDate_dCancel_btn") {
-            dom.showDiv(["question_d"]);
+               dom.changeDivTo("question_d", event.target.id);
         }
         if (event.target.id === "qDate_dOk_btn") {
             const options = {}
@@ -18,7 +18,7 @@ export function qDate_d(addQToForm, cf, dom, showForm) {
                 };
             
             addQToForm(cf, q);
-            dom.els.showForm_d.dataset.toFrom = "showForm_d qDate_d";
+            dom.els.showForm_d.dataset.from = "showForm_d qDate_d";
             document.dispatchEvent(dom.changeDiv);
         }
     })

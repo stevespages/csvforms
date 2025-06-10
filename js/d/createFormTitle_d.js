@@ -3,7 +3,7 @@ export function createFormTitle_d(cf, dom) {
     dom.els.createFormTitle_d.addEventListener("click", event => {
 
         if (event.target.id === "createFormTitle_dCancel_btn") {
-            dom.showDiv(["home_d"]);
+               dom.changeDivTo("home_d", event.target.id);
         }
         
         if (event.target.id === "createFormTitle_dStart_btn") {
@@ -21,7 +21,7 @@ export function createFormTitle_d(cf, dom) {
             const formIdx = (csvForms.forms.push(newForm) - 1)
             csvForms.activeIdxs.form = formIdx;
             cf.setCsvForms(csvForms);
-            dom.els.showForm_d.dataset.toFrom = "showForm_d createFormTitle_d";
+            dom.els.showForm_d.dataset.from = "showForm_d createFormTitle_d";
             document.dispatchEvent(dom.changeDiv);
         }
 

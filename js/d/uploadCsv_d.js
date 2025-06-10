@@ -3,7 +3,7 @@ export function uploadCsv_d(cf, dom) {
     dom.els.uploadCsv_d.addEventListener("click", event => {
 
         if (event.target.id === "uploadCsv_dCancel_btn") {
-            dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+            dom.changeDivTo("showForm_d", event.target.id);
         }
 
         if (event.target.id === "uploadCsv_dOk_btn") {
@@ -39,12 +39,12 @@ export function uploadCsv_d(cf, dom) {
                         columns.push(colFromCsv);
                     })
                     cf.setCsvForms(csvForms);
-                    dom.els.showForm_d.dataset.toFrom = "showForm_d uploadCsv_d";
+                    dom.els.showForm_d.dataset.from = "showForm_d uploadCsv_d";
                     document.dispatchEvent(dom.changeDiv);
                 })
                 reader.readAsText(csvFile);
             } else {
-                dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+                dom.changeDivTo("showForm_d", event.target.id);
             }
         }
 

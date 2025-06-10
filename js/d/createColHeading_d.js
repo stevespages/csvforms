@@ -1,7 +1,17 @@
 export function createColHeading_d(cf, dom) {
+    if (
+        [
+            "showForm_d"
+        ]
+        .includes(dom.els.createColHeading_d.dataset.from)
+    ){
+        dom.els.createColHeading_d.dataset.from = "";
+        dom.els.createColHeading_d_inp.value = "";
+    }
+
     dom.els.createColHeading_d.addEventListener("click", event => {
         if (event.target.id === "createColHeading_dCancel_btn") {
-            dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+            dom.changeDivTo("showForm_d", thisD);
         }
         if (event.target.id === "createColHeading_dStart_btn") {
             const csvForms = cf.getCsvForms();
@@ -14,8 +24,7 @@ export function createColHeading_d(cf, dom) {
                     userResponses: [],
                 })
             cf.setCsvForms(csvForms);
-            dom.els.showForm_d.dataset.toFrom = "showForm_d createColHeading_d";
-            document.dispatchEvent(dom.changeDiv);
+            dom.changeDivTo("showForm_d", event.target.id);
         }
     })
 }

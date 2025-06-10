@@ -1,5 +1,17 @@
 export function mainMenu_d(cf, dom) {
 
+    document.addEventListener("changeDiv", () => {
+        if (
+            [
+                "home_dMainMenu_btn"
+            ]
+            .includes(dom.els.mainMenu_d.dataset.from)
+        ) {
+            dom.els.mainMenu_d.dataset.from = "";
+            dom.showDiv("mainMenu_d");
+        }
+    })
+
     dom.els.mainMenu_d.addEventListener("click", event => {
         if (event.target.id === "mainMenu_dBackup_btn") {
             const csvForms = cf.getCsvForms();
@@ -15,23 +27,23 @@ export function mainMenu_d(cf, dom) {
             a.click();
         }
         if (event.target.id === "mainMenu_dCancel_btn") {
-            dom.showDiv(["home_d"]);
+               dom.changeDivTo("home_d", event.target.id);
         }
         if (event.target.id === "mainMenu_dClearAllData_btn") {
             // should be done via reallyDelete_d
             const csvForms = cf.getCsvForms();
             csvForms.forms = [];
             cf.setCsvForms(csvForms);
-            dom.els.home_d.dataset.toFrom = "home_d mainMenu_d";
+            dom.els.home_d.dataset.from = "home_d mainMenu_d";
             document.dispatchEvent(dom.changeDiv);
         }
         if (event.target.id === "mainMenu_dCreateForm_btn") {
             dom.els.createFormTitle_dTitle_inp.value = "";
-            dom.showDiv(["createFormTitle_d"]);
+               dom.changeDivTo("createFormTitle_d", event.target.id);
         }
         if (event.target.id === "mainMenu_dPasteJsonForm_btn") {
             //dom.els.pasteJsonForm_d_inp.value = "";
-            //dom.showDiv(["pasteJsonForm_d"]);
+            //   dom.changeDivTo("pasteJsonForm_d", event.target.id);
             // for testing dom error function
             dom.showDiv(9);
         }
@@ -40,7 +52,7 @@ export function mainMenu_d(cf, dom) {
             dom.els.uploadCsvForForm_dTitle_inp.textContent = "";
             dom.els.uploadCsvForForm_dFileNamePrefix_inp.textContent = "";
             dom.els.uploadCsvForForm_dDescription_inp = "";
-            dom.showDiv(["uploadCsvForForm_d"]);
+               dom.changeDivTo("uploadCsvForForm_d", event.target.id);
         }
     })
 

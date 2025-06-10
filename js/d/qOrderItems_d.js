@@ -1,8 +1,20 @@
 export function qOrderItems_d(addQToForm, cf, dom) {
 
+    document.addEventListener("changeDiv", () => {
+        if (
+            [        
+                "question_d"
+            ]
+            .includes(dom.els.qOrderItems_d.dataset.from)
+        ) {
+            dom.els.qOrderItems_d.dataset.from = "";
+            
+        }
+    })
+
     dom.els.qOrderItems_d.addEventListener("click", event => {
         if (event.target.id === "qOrderItems_dCancel_btn") {
-            dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+            dom.changeDivTo("showForm_d", event.target.id);
         }
         if (event.target.id === "qOrderItems_dOrderItemOk_btn") {
             const li = document.createElement("li");
@@ -23,7 +35,7 @@ export function qOrderItems_d(addQToForm, cf, dom) {
                     values: values,
                 }
             addQToForm(cf, q);
-            dom.els.showForm_d.dataset.toFrom = "showForm_d qOrderItems_d";
+            dom.els.showForm_d.dataset.from = "showForm_d qOrderItems_d";
             document.dispatchEvent(dom.changeDiv);
         }
     })

@@ -1,8 +1,20 @@
 export function qText_d(addQToForm, cf, dom) {
 
+        document.addEventListener("changeDiv", () => {
+        if (
+            [        
+                "question_dText_btn"
+            ]
+            .includes(dom.els.qText_d.dataset.from)
+        ) {
+            dom.els.qText_d.dataset.from = "";
+            dom.showDiv("qText_d");
+        }
+    })
+
     dom.els.qText_d.addEventListener("click", event => {
         if (event.target.id === "qText_dCancel_btn") {
-            dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+            dom.changeDivTo("showForm_d", event.target.id);
         }
         if (event.target.id === "qText_dOk_btn") {
             const q = 
@@ -10,8 +22,7 @@ export function qText_d(addQToForm, cf, dom) {
                     category: "text",
                 };
             addQToForm(cf, q);
-            dom.els.showForm_d.dataset.toFrom = "showForm_d qText_d";
-            document.dispatchEvent(dom.changeDiv);
+            dom.changeDivTo("showForm_d", event.target.id);
         }
     })
 

@@ -1,25 +1,37 @@
 export function question_d(dom) {
 
+        document.addEventListener("changeDiv", () => {
+        if (
+            [        
+                "colMenu_dAddQuestion_btn"
+            ]
+            .includes(dom.els.question_d.dataset.from)
+        ) {
+            dom.els.question_d.dataset.from = "";
+            dom.showDiv("question_d");
+        }
+    })
+
     dom.els.question_d.addEventListener("click", (event) => {
         if (event.target.id === "question_dCancel_btn") {
-            dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+            dom.changeDivTo("showForm_d", event.target.id);
         }
         if (event.target.id === "question_dCheckbox_btn") {
             dom.els.qCheckbox_dChoices_ul.innerHTML = "";
-            dom.showDiv(["qCheckbox_d"]);
+               dom.changeDivTo("qCheckbox_d", event.target.id);
         }
         if (event.target.id === "question_dDate_btn") {
-            dom.showDiv(["qDate_d"]);
+               dom.changeDivTo("qDate_d", event.target.id);
         }
         if (event.target.id === "question_dOrderItems_btn") {
-            dom.showDiv(["qOrderItems_d"]);
+               dom.changeDivTo("qOrderItems_d", event.target.id);
         }
         if (event.target.id === "question_dRadio_btn") {
             dom.els.qRadio_dChoices_ul.innerHTML = "";
-            dom.showDiv(["qRadio_d"]);
+               dom.changeDivTo("qRadio_d", event.target.id);
         }
         if (event.target.id === "question_dText_btn") {
-            dom.showDiv(["qText_d"]);
+               dom.changeDivTo("qText_d", event.target.id);
         }
     });
 

@@ -57,7 +57,7 @@ export function changeColOrder_d(cf, dom) {
         }
 
         if (event.target.id === "changeColOrder_dEnd_btn") {
-            dom.els.showForm_d.dataset.toFrom = "showForm_d changeColOrder_d";
+            dom.els.showForm_d.dataset.from = "showForm_d changeColOrder_d";
             document.dispatchEvent(dom.changeDiv);
         }
 

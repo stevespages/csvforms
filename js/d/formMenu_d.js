@@ -1,36 +1,37 @@
 export function formMenu_d(cf, dom, makeCsv) {
 
     document.addEventListener("changeDiv", () => {
-        if (dom.els.formMenu_d.dataset.toFrom === "formMenu_d home_d") {
-            dom.els.formMenu_d.dataset.toFrom = "";
+        if (
+            [
+                "home_dForms_ul_li-class"
+            ]
+            .includes(dom.els.formMenu_d.dataset.from)
+        ) {
+            dom.els.formMenu_d.dataset.from = "";
 
             // check form has columns. If not disable and grey row btn.
 
-            dom.showDiv("formMenu_d");
             const csvForms = cf.getCsvForms();
             const form = cf.getForm(csvForms);
             dom.els.formMenu_d_h2.textContent = form.title;
+
+            dom.showDiv("formMenu_d");
         }
     })
 
     dom.els.formMenu_d.addEventListener("click", event => {
         if (event.target.id === "formMenu_dCancel_btn") {
-            dom.showDiv(["home_d"]);
+               dom.changeDivTo("home_d", event.target.id);
         }
         if (event.target.id === "formMenu_dDelete_btn") {
             const csvForms = cf.getCsvForms();
             dom.els.deleteReally_dOk_btn.dataset.deleteWhat = "form";
             dom.els.deleteReally_dOk_btn.dataset.okTo = "home_d";
             dom.els.deleteReally_dCancel_btn.dataset.cancelTo = "home_d";
-            dom.showDiv(["deleteReally_d"]);
+               dom.changeDivTo("deleteReally_d", event.target.id);
         }
         if (event.target.id === "formMenu_dEdit_btn") {
-            dom.els.showForm_d.dataset.toFrom = "showForm_d formMenu_d";
-            document.dispatchEvent(dom.changeDiv);
-            /*
-            showForm(cf, dom);
-            dom.showDiv(["showForm_d", "showForm_dInner_d"]);
-            */
+            dom.changeDivTo("showForm_d", event.target.id);
         }
         if (event.target.id === "formMenu_dEmailRows_btn") {
             const csvForms = cf.getCsvForms();
@@ -55,20 +56,18 @@ export function formMenu_d(cf, dom, makeCsv) {
             if (form.columns.length === 0) {
                 return;
             }
-
-            dom.els.row_d.dataset.toFrom = "row_d formMenu_d";
-            document.dispatchEvent(dom.changeDiv);
+            dom.changeDivTo("row_d", event.target.id);
         }
         if (event.target.id === "formMenu_dSeeFormAndRows_btn") {
             const forms = JSON.parse(localStorage.getItem("forms"));
             const form = forms.formsArr[forms.activeIdxs.form];
             dom.els.see_d_section.append(JSON.stringify(form));
-            dom.showDiv(["see_d"]);
+               dom.changeDivTo("see_d", event.target.id);
         }
         if (event.target.id === "formMenu_dSeeRows_btn") {
             const csvForHtml = makeCsv("for HTML");
             dom.els.see_d_section.append(csvForHtml.headerP, csvForHtml.dataSection);
-            dom.showDiv(["see_d"]);
+               dom.changeDivTo("see_d", event.target.id);
         }
     })
 

@@ -71,8 +71,9 @@ showForm_d(cf, dom);
 uploadCsv_d(cf, dom);
 
 /*
-dom.els.home_d.dataset.toFrom = "home_d START"
+dom.els.home_d.dataset.from = "home_d START"
 document.dispatchEvent(dom.changeDiv);
 */
 
-dom.changeDivTo("home_d", {from: "START"});
+dom.changeDivTo("home_d", "START");
+dom.showDiv("home_d");

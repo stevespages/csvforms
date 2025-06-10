@@ -1,7 +1,7 @@
 export function qRadio_d(addQToForm, cf, dom) {
     dom.els.qRadio_d.addEventListener("click", event => {
         if (event.target.id === "qRadio_dCancel_btn") {
-            dom.showDiv(["showForm_d","showForm_dInner_d"]);
+               dom.changeDivTo("showForm_d", event.target.id);
         }
         if (event.target.id === "qRadio_dChoiceOk_btn") {
             if (!dom.els.qRadio_dChoices_inp.value) {
@@ -25,7 +25,7 @@ export function qRadio_d(addQToForm, cf, dom) {
                     values: values,
                 }
             addQToForm(cf, q);
-            dom.els.showForm_d.dataset.toFrom = "showForm_d formTitleEdit_d";
+            dom.els.showForm_d.dataset.from = "showForm_d formTitleEdit_d";
             document.dispatchEvent(dom.changeDiv);
         }
     })
