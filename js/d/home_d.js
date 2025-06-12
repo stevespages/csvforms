@@ -6,6 +6,7 @@ export function home_d(cf, dom) {
             "deleteReally_d",
             "formMenu_d",
             "mainMenu_d",
+            "readyMadeForms_d_li-class",
             "showForm_d",
             "START"
             ]

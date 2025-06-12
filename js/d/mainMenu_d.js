@@ -47,6 +47,9 @@ export function mainMenu_d(cf, dom) {
             // for testing dom error function
             dom.showDiv(9);
         }
+        if (event.target.id === "mainMenu_dReadyMadeForms_btn") {
+            dom.changeDivTo("readyMadeForms_d", event.target.id);
+        }
         if (event.target.id === "mainMenu_dUploadCsvForForm_btn") {
             dom.els.uploadCsvForForm_dFile_inp.value = "";
             dom.els.uploadCsvForForm_dTitle_inp.textContent = "";

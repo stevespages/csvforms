@@ -1,4 +1,17 @@
 export function deleteReally_d(cf, dom) {
+
+    document.addEventListener("changeDiv", () => {
+        if (
+            [
+                "formMenu_dDelete_btn",
+            ]
+            .includes(dom.els.deleteReally_d.dataset.from)
+        ) {
+            dom.els.deleteReally_d.dataset.from = "";
+            dom.showDiv("deleteReally_d");
+        }
+    })
+
     dom.els.deleteReally_d.addEventListener("click", event => {
         if (event.target.id === "deleteReally_dCancel_btn") {
             if (event.target.dataset.cancelTo === "home_d") {
@@ -27,8 +40,7 @@ export function deleteReally_d(cf, dom) {
                 const formIdx = csvForms.activeIdxs.form;
                 csvForms.forms.splice(formIdx, 1);
                 cf.setCsvForms(csvForms);
-                dom.els.home_d.dataset.from = "home_d deleteReally_d";
-                document.dispatchEvent(dom.changeDiv);
+                dom.changeDivTo("home_d", "deleteReally_d");
             }
             if (event.target.dataset.deleteWhat === "question") {
                 const qIdx = event.target.dataset.qIdx;

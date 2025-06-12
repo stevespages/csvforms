@@ -24,11 +24,10 @@ export function formMenu_d(cf, dom, makeCsv) {
                dom.changeDivTo("home_d", event.target.id);
         }
         if (event.target.id === "formMenu_dDelete_btn") {
-            const csvForms = cf.getCsvForms();
             dom.els.deleteReally_dOk_btn.dataset.deleteWhat = "form";
             dom.els.deleteReally_dOk_btn.dataset.okTo = "home_d";
             dom.els.deleteReally_dCancel_btn.dataset.cancelTo = "home_d";
-               dom.changeDivTo("deleteReally_d", event.target.id);
+            dom.changeDivTo("deleteReally_d", event.target.id);
         }
         if (event.target.id === "formMenu_dEdit_btn") {
             dom.changeDivTo("showForm_d", event.target.id);

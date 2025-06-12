@@ -19,6 +19,7 @@ import { qOrderItems_d } from "./d/qOrderItems_d.js";
 import { qRadio_d } from "./d/qRadio_d.js";
 import { qText_d } from "./d/qText_d.js";
 import { question_d } from "./d/question_d.js";
+import { readyMadeForms_d } from "./d/readyMadeForms_d.js";
 import { showForm_d } from "./d/showForm_d.js";
 import { uploadCsv_d } from "./d/uploadCsv_d.js";
 
@@ -67,13 +68,9 @@ qOrderItems_d(addQToForm, cf, dom);
 qRadio_d(addQToForm, cf, dom);
 qText_d(addQToForm, cf, dom);
 question_d(dom);
+readyMadeForms_d(cf, dom);
 showForm_d(cf, dom);
 uploadCsv_d(cf, dom);
-
-/*
-dom.els.home_d.dataset.from = "home_d START"
-document.dispatchEvent(dom.changeDiv);
-*/
 
 dom.changeDivTo("home_d", "START");
 dom.showDiv("home_d");
